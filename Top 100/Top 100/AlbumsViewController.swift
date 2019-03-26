@@ -96,7 +96,7 @@ final class AlbumsViewController: UIViewController, SequenceFetching  {
         navigationController?.navigationBar.barStyle = .black
         navigationController?.navigationBar.isTranslucent = false
         navigationController?.navigationBar.shadowImage = UIImage()
-        navigationItem.title = NSLocalizedString( "Top 30 Albums", comment: "Used as the title for the main view")
+        navigationItem.title = NSLocalizedString( "Top 100 Albums", comment: "Used as the title for the main view")
     }
     
     private func setupSequenceView<ViewType>(with sequenceView: ViewType) where ViewType: UICollectionView {

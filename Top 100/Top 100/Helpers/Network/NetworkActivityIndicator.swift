@@ -1,6 +1,6 @@
 //
 //  NetworkActivityIndicator.swift
-//  Top 30
+//  Top 100
 //
 //  Created by William Aurnhammer on 4/29/17.
 //  Copyright © 2017 aurnhammer.com. All rights reserved.

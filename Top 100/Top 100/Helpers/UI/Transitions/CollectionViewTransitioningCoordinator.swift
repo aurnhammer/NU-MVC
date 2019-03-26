@@ -1,6 +1,6 @@
 //
 //  CollectionViewTransitioningCoordinator.swift
-//  Top 30
+//  Top 100
 //
 //  Created by William Aurnhammer on 1/11/19.
 //  Copyright © 2019 Aurnhammer All rights reserved.

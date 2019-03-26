@@ -1,6 +1,6 @@
 //
 //  JSONDecoder+NSManagedObject.swift
-//  Top 30
+//  Top 100
 //
 //  Created by William Aurnhammerurbammer on 1/13/19.
 //  Copyright © 2019 Aurnhammer. All rights reserved.
