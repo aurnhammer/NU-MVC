@@ -9,7 +9,6 @@
 import CoreData
 import UIKit
 
-
 final class AlbumsViewController: UIViewController, SequenceFetching  {
     
     lazy var sequenceView: SequenceViewer? = {

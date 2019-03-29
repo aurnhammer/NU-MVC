@@ -8,8 +8,6 @@
 
 import UIKit
 
-
-
 /// The Cell that manages the display an Album
 final class AlbumCollectionViewCell: UICollectionViewCell, Configurable, Layoutable {
     
