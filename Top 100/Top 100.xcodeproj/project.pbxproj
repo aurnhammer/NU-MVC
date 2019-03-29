@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3D287BBD224E8B77002B420E /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D287BBC224E8B77002B420E /* DataManager.swift */; };
 		A9483B3A220360CD0088098C /* FetchedDataSourceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9483B39220360CD0088098C /* FetchedDataSourceProvider.swift */; };
 		A95291822201DC1500EBCA9B /* GridLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A95291812201DC1500EBCA9B /* GridLayout.swift */; };
 		A95291842201F86500EBCA9B /* UICell + Protocol Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A95291832201F86500EBCA9B /* UICell + Protocol Extensions.swift */; };
@@ -68,6 +69,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3D287BBC224E8B77002B420E /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		A9483B39220360CD0088098C /* FetchedDataSourceProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchedDataSourceProvider.swift; sourceTree = "<group>"; };
 		A95291812201DC1500EBCA9B /* GridLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridLayout.swift; sourceTree = "<group>"; };
 		A95291832201F86500EBCA9B /* UICell + Protocol Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICell + Protocol Extensions.swift"; sourceTree = "<group>"; };
@@ -142,6 +144,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3D287BBE224E8B87002B420E /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				3D287BBC224E8B77002B420E /* DataManager.swift */,
+			);
+			name = Managers;
+			path = "New Group";
+			sourceTree = "<group>";
+		};
 		A9483B4022039CC40088098C /* DataSource */ = {
 			isa = PBXGroup;
 			children = (
@@ -159,6 +170,7 @@
 			children = (
 				A9A53C0A221DD1D50088420B /* Delegate */,
 				A9483B4022039CC40088098C /* DataSource */,
+				3D287BBE224E8B87002B420E /* Managers */,
 				A9A53C20221DE91F0088420B /* UI Extensions */,
 			);
 			path = "Delegate and DataSource";
@@ -307,8 +319,8 @@
 				A9FC473421FB956F004ACDF0 /* AlbumDetailViewController.swift */,
 				A9FC472821FB9139004ACDF0 /* AlbumViewCell.swift */,
 				A952918D22034D8F00EBCA9B /* AlbumCellLayout.swift */,
-				A9FC472621FB9109004ACDF0 /* AlbumsOperations.swift */,
 				A9ECB9FA22092052007D0899 /* AlbumsViewControllerDelegate.swift */,
+				A9FC472621FB9109004ACDF0 /* AlbumsOperations.swift */,
 				A952918B22033CCF00EBCA9B /* API */,
 				A94E259821FBFE3100F0F12F /* Delegate and DataSource */,
 				A9FC46DA21FB8E72004ACDF0 /* Assets.xcassets */,
@@ -513,6 +525,7 @@
 				A9FC471321FB9088004ACDF0 /* AsynchronousOperation.swift in Sources */,
 				A9FC471F21FB90B6004ACDF0 /* API.swift in Sources */,
 				A9A53C10221DD2790088420B /* DelegateHighlightProvidable.swift in Sources */,
+				3D287BBD224E8B77002B420E /* DataManager.swift in Sources */,
 				A9FC46D121FB8E70004ACDF0 /* AppDelegate.swift in Sources */,
 				A9A53C12221DD2A80088420B /* DelegateCellProvidable.swift in Sources */,
 				A9FC473921FB9631004ACDF0 /* AlbumsViewController.swift in Sources */,
@@ -686,13 +699,14 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 84LWHNDQ7W;
 				INFOPLIST_FILE = "Top 100/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.disctrictapp.Top-100";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -704,13 +718,14 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 84LWHNDQ7W;
 				INFOPLIST_FILE = "Top 100/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.disctrictapp.Top-100";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// An object that adopts the DelegateSelectionProvideable protocol is responsible for notification of didSelect/didDeselect events.
 public protocol DelegateSelectionProvideable: DelegateProvidable {
     func didSelect(itemAt indexPath: IndexPath)
     func didDeselect(itemAt indexPath: IndexPath)

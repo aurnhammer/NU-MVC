@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// A Struct that instantiates the views contained in a cell and their constraints
 struct AlbumCellLayout {
     
     private var rootView: UIView
@@ -98,12 +99,19 @@ struct AlbumCellLayout {
         return view
     }()
     
+    // MARK: - Initializers
+    
+    /// Initialzer for the AlbumCellLayout.
+    ///
+    /// - Parameters:
+    ///     - view: Injects the UIView
     init(for view: UIView) {
         self.rootView = view
         layout()
     }
     
-    mutating func layout() {
+    // MARK: - Layout
+    mutating private func layout() {
         rootView.addSubview(imageView)
         rootView.addSubview(gradiantView)
         rootView.addSubview(rootStackView)

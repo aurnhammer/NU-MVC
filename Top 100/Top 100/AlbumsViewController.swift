@@ -9,6 +9,7 @@
 import CoreData
 import UIKit
 
+/// View Controller that manages the display of a list of Albums
 final class AlbumsViewController: UIViewController, SequenceFetching  {
     
     lazy var sequenceView: SequenceViewer? = {
@@ -152,7 +153,7 @@ final class AlbumsViewController: UIViewController, SequenceFetching  {
             return
         }
         
-        let fetchRSSOperation = FetchAlbumsOperation(with: url)
+        let fetchRSSOperation = AlbumsOperation(with: url)
         
         fetchRSSOperation.fetchAlbumsCompletionBlock = { objects in
             if let objects = objects {

@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// An object that adopts the DelegateCellProvidable protocol is responsible for notification of willDisplay/didEndDisplaying events.
 public protocol DelegateCellProvidable {
     func willDisplay(cell: Reusable, forItemAt indexPath: IndexPath)
     func didEndDisplaying(cell: Reusable, forItemAt indexPath: IndexPath)

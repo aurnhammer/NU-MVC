@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// An object that adopts the DelegateHighlightProvideable protocol is responsible for notification of didHighlight/didUnhighlight events.
 public protocol DelegateHighlightProvideable: DelegateProvidable {
     func didHighlight(itemAt indexPath: IndexPath)
     func didUnhighlight(itemAt indexPath: IndexPath)

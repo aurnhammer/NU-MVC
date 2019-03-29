@@ -8,7 +8,7 @@
 
 import UIKit
 
-/// The Cell that manages the display an Album
+/// The CollectionViewCell that manages the display an Album
 final class AlbumCollectionViewCell: UICollectionViewCell, Configurable, Layoutable {
     
     // The type that the cell is displaying
@@ -19,7 +19,9 @@ final class AlbumCollectionViewCell: UICollectionViewCell, Configurable, Layouta
     
     // Private properties
     private var albumCellLayout: AlbumCellLayout?
-        
+   
+    // MARK: - Initializers
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         layout()
@@ -75,7 +77,7 @@ final class AlbumCollectionViewCell: UICollectionViewCell, Configurable, Layouta
     }
 }
 
-/// The Cell that manages the display an Album
+/// The TableViewCell that manages the display an Album
 final class AlbumTableViewCell: UITableViewCell, Configurable, Layoutable {
     
     // The type that the cell is displaying

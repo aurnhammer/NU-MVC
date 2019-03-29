@@ -9,24 +9,8 @@
 import CoreData
 import UIKit
 
-final class DataManager {
-    
-    private let session: URLSession
-    
-    init(session: URLSession = URLSession.shared) {
-        self.session = session
-    }
-    
-    func fetchData(from url: URL, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) {
-        let dataTask = session.dataTask(with: url) { (data, response, error) in
-            completionHandler(data, response, error)
-        }
-        dataTask.resume()
-    }
-}
-
 /// An Operation wrapping a URL Request. Used to Fetch Albums from Apple's iTunes RSS Feed
-final class FetchAlbumsOperation: AsynchronousOperation {
+final class AlbumsOperation: AsynchronousOperation {
     // Public
     var fetchAlbumsCompletionBlock: (([Album]?) -> Swift.Void)?
     // Private

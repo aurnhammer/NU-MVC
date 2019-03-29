@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// A Class that manages the selection state of an AlbumsViewController
 class AlbumsViewDelegateProvider: DelegateSelectionProvideable {
     
     static private var transitioningCoordinator: UIViewControllerTransitioningDelegate?

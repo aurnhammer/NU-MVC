@@ -129,7 +129,7 @@ final class AlbumDetailViewController: UIViewController {
     
     // MARK: - Initializers
     
-    /// Initialzer for the Album Detail View Controooer.
+    /// Initialzer for the AlbumDetailViewController.
     ///
     /// - Parameters:
     ///     - objectID: Injects the NSManagedObjectID

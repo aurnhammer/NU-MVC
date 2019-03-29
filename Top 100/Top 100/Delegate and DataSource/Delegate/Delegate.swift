@@ -8,7 +8,7 @@
 
 import UIKit
 
-/// Storage for our Object that confroms to DataProvidable
+/// Storage for our Object that confroms to DelegateProvidable
 class Delegate<Provider: DelegateProvidable>: NSObject {
     
     // MARK: - Private Properties
