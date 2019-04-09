@@ -15,9 +15,9 @@ final class AlbumCollectionViewCell: UICollectionViewCell, Configurable, Layouta
     typealias Item = Album
 
     // Public properties
-    var album: Item?
     
     // Private properties
+    private var album: Item?
     private var albumCellLayout: AlbumCellLayout?
    
     // MARK: - Initializers
@@ -84,9 +84,9 @@ final class AlbumTableViewCell: UITableViewCell, Configurable, Layoutable {
     typealias Item = Album
     
     // Public properties
-    var album: Item?
     
     // Private properties
+    private  var album: Item?
     private var albumCellLayout: AlbumCellLayout?
     
     // Initializers
