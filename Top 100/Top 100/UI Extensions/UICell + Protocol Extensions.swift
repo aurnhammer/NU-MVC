@@ -24,16 +24,22 @@ extension Reusable {
 /// Collection view Cell conformance to the reusable protocol
 extension UICollectionViewCell: Reusable {}
 
-/// Table view Cell conformance to the reusable protocol
-extension UITableViewCell: Reusable {}
-
 /// Cell's that conform to the configurable protocol all a generic data handler to configure the cell with a generic Item.
 public protocol Configurable {
-    associatedtype Item
-    func configure(with item: Item)
+    associatedtype Model
+    func configure(withModel model: Model)
+}
+
+public protocol SectionModelConfigurable {
+    func configure(withSectionModel model: SectionViewModelProtocol)
 }
 
 /// Conformance to Layoutable if required for Cells that wish to handle layout outside their class instance.
 public protocol Layoutable {
     func layout()
 }
+
+public protocol Themeable {
+    func theme()
+}
+

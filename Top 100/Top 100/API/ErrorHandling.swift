@@ -15,9 +15,9 @@ enum Errors {
      Error handling
      An error domain, and an error code enumeration.
      */
-    static let top30ErrorDomain = "top30ErrorDomain"
+    static let top100ErrorDomain = "top100ErrorDomain"
     
-    enum Top30ErrorCode: NSInteger {
+    enum Top100ErrorCode: NSInteger {
         case networkUnavailable = 101
         case wrongDataFormat = 102
         case wrongURLFormat = 103

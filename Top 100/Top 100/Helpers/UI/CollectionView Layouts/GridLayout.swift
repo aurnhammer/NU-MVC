@@ -9,7 +9,7 @@ final public class GridLayout: UICollectionViewFlowLayout {
     override public func prepare() {
         super.prepare()
         guard let collectionView = collectionView else {
-            fatalError("ColumnFlowLayout requires a CollectionView")
+            fatalError("GridLayout requires a CollectionView")
         }
         minimumLineSpacing = spacing
         minimumInteritemSpacing = spacing

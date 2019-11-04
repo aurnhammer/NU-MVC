@@ -14,10 +14,10 @@ class ViewControllerTransitioningCoordinator: NSObject, UIViewControllerAnimated
     // MARK: - Private Properties
     static private var animationDuration: TimeInterval = 0.63
     private var indexPath: IndexPath!
-    private var view: SequenceViewer!
+    private var view: UICollectionView!
     
     // MARK: - Initialization
-    init(with view: SequenceViewer, for selectedItems: IndexPath) {
+    init(with view: UICollectionView, for selectedItems: IndexPath) {
         super.init()
         self.view = view
         self.indexPath = selectedItems
@@ -40,7 +40,7 @@ class ViewControllerTransitioningCoordinator: NSObject, UIViewControllerAnimated
             let toView = toViewController.view,
             let fromViewController = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.from),
             let fromView = fromViewController.view,
-            var cell = view.sequenceCell(at: indexPath)
+            var cell = view.collectionViewCell(at: indexPath)
             else {
                 return
         }

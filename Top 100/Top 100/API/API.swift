@@ -9,6 +9,7 @@
 /// Namespace for storing URL Strings
 enum API {
     
-    static let top100AlbumsURL = "https://rss.itunes.apple.com/api/v1/us/itunes-music/top-albums/all/200/non-explicit.json"
-
+    static let topAlbumsURL = "https://rss.itunes.apple.com/api/v1/us/itunes-music/top-albums/all/100/non-explicit.json"
+    
+    static let topMoviesURL = "https://rss.itunes.apple.com/api/v1/us/movies/top-movies/all/100/explicit.json"
 }

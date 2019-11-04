@@ -6,23 +6,15 @@
 //  Copyright © 2019 Aurnhammer. All rights reserved.
 //
 
-import CoreData
 import StoreKit
 import UIKit
 
 /// View Controller that manages the display of a single Album
 final class AlbumDetailViewController: UIViewController {
 
+    var album: Album?
+
     // MAARK - Private Properties
-    private var objectID: NSManagedObjectID!
-    
-    private lazy var album: Album = {
-        guard let album = AlbumData.container.viewContext.object(with: objectID) as? Album else {
-            fatalError("Album is not the right type or does not exist")
-        }
-        return album
-    }()
-    
     private lazy var rootStackView: UIStackView = {
         let view = UIStackView(arrangedSubviews: [imageContainerView, labelsContainerView])
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -132,12 +124,11 @@ final class AlbumDetailViewController: UIViewController {
     /// Initialzer for the AlbumDetailViewController.
     ///
     /// - Parameters:
-    ///     - objectID: Injects the NSManagedObjectID
-    convenience init(objectID: NSManagedObjectID ) {
+    ///     - album: A Struct of AlbumNew
+    convenience init(album: Album ) {
         self.init()
-        self.objectID = objectID
+        self.album = album
     }
-    
     // MARK - View Lifecycle
     
     override func viewDidLoad() {
@@ -177,20 +168,26 @@ final class AlbumDetailViewController: UIViewController {
     }
     
     private func setupImageView() {
-        if let data = album.albumArtworkThumbnail,
+        guard var album = album else { return }
+        if let data = album.artworkThumbnailData,
             let image = UIImage(data: data) {
             imageView.image = image
         }
         else {
+            guard let url = album.url else { return }
             imageView.image = UIImage(named: "CellBackground")
-            let operation = FetchAlbumImageOperaton(with: album)
+            let operation = FetchImageOperaton(with: url)
+            operation.fetchImageOperationCompletionBlock = { data in
+                album.artworkThumbnailData = data
+            }
             operation.start()
         }
     }
     
     private func setupLabels() {
+        guard let album = album else { return }
         artistsNameLabel.text = album.artistName
-        albumNameLabel.text = album.albumName
+        albumNameLabel.text = album.name
         releaseDataLabel.text = NSLocalizedString("Release Date: " + "\(album.releaseDate ?? "Release Date Unkown")", comment: "Prefix string used to identify the type of date")
     }
 
@@ -297,9 +294,9 @@ extension AlbumDetailViewController: SKStoreProductViewControllerDelegate {
     static let storeViewController  = SKStoreProductViewController()
 
     @objc private func openInITunes() {
-        guard let identifier = album.itunesLink?.lastPathComponent else {
+        guard let identifier = album?.url?.lastPathComponent else {
             let description = NSLocalizedString("Could not parse iTunes Link", comment: "Link identifier was not able to be parsed from the selected URL")
-            let error = NSError(domain: Errors.top30ErrorDomain, code: Errors.Top30ErrorCode.wrongURLFormat.rawValue,
+            let error = NSError(domain: Errors.top100ErrorDomain, code: Errors.Top100ErrorCode.wrongURLFormat.rawValue,
                                 userInfo: [NSLocalizedDescriptionKey: description])
             Log.error(with: #line, functionName: #function, error: error)
             return
