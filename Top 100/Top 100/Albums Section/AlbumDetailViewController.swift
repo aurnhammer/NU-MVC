@@ -12,7 +12,7 @@ import UIKit
 /// View Controller that manages the display of a single Album
 final class AlbumDetailViewController: UIViewController {
 
-    var album: Album?
+    var albumViewModel: AlbumViewModel?
 
     // MAARK - Private Properties
     private lazy var rootStackView: UIStackView = {
@@ -125,9 +125,9 @@ final class AlbumDetailViewController: UIViewController {
     ///
     /// - Parameters:
     ///     - album: A Struct of AlbumNew
-    convenience init(album: Album ) {
+    convenience init(albumViewModel: AlbumViewModel ) {
         self.init()
-        self.album = album
+        self.albumViewModel = albumViewModel
     }
     // MARK - View Lifecycle
     
@@ -168,27 +168,27 @@ final class AlbumDetailViewController: UIViewController {
     }
     
     private func setupImageView() {
-        guard var album = album else { return }
-        if let data = album.artworkThumbnailData,
+        guard let albumViewModel = albumViewModel else { return }
+        if let data = albumViewModel.artworkThumbnailData,
             let image = UIImage(data: data) {
             imageView.image = image
         }
         else {
-            guard let url = album.url else { return }
+            guard let url = albumViewModel.url else { return }
             imageView.image = UIImage(named: "CellBackground")
             let operation = FetchImageOperaton(with: url)
             operation.fetchImageOperationCompletionBlock = { data in
-                album.artworkThumbnailData = data
+                albumViewModel.artworkThumbnailData = data
             }
             operation.start()
         }
     }
     
     private func setupLabels() {
-        guard let album = album else { return }
-        artistsNameLabel.text = album.artistName
-        albumNameLabel.text = album.name
-        releaseDataLabel.text = NSLocalizedString("Release Date: " + "\(album.releaseDate ?? "Release Date Unkown")", comment: "Prefix string used to identify the type of date")
+        guard let albumViewModel = albumViewModel else { return }
+        artistsNameLabel.text = albumViewModel.artistName
+        albumNameLabel.text = albumViewModel.name
+        releaseDataLabel.text = NSLocalizedString("Release Date: " + "\(albumViewModel.releaseDate ?? "Release Date Unkown")", comment: "Prefix string used to identify the type of date")
     }
 
     
@@ -294,7 +294,7 @@ extension AlbumDetailViewController: SKStoreProductViewControllerDelegate {
     static let storeViewController  = SKStoreProductViewController()
 
     @objc private func openInITunes() {
-        guard let identifier = album?.url?.lastPathComponent else {
+        guard let identifier = albumViewModel?.url?.lastPathComponent else {
             let description = NSLocalizedString("Could not parse iTunes Link", comment: "Link identifier was not able to be parsed from the selected URL")
             let error = NSError(domain: Errors.top100ErrorDomain, code: Errors.Top100ErrorCode.wrongURLFormat.rawValue,
                                 userInfo: [NSLocalizedDescriptionKey: description])

@@ -11,6 +11,8 @@ import UIKit
 class MoviesSectionCollectionViewCell: UICollectionViewCell, SectionModelConfigurable, Layoutable, Themeable {
     
     typealias SectionViewModel = MoviesSectionViewModel
+    
+    private weak var presentationController: Presentable?
     private var sectionViewModel: SectionViewModel?
     private var cellLayout: MovieCellLayout?
     private var cellTheme: MovieCellTheme?
@@ -44,7 +46,7 @@ class MoviesSectionCollectionViewCell: UICollectionViewCell, SectionModelConfigu
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configure(withSectionModel model: SectionViewModelProtocol) {
+    func configure(withSectionModel model: SectionViewModelProtocol, presenter: Presentable) {
         self.sectionViewModel = model as? MoviesSectionCollectionViewCell.SectionViewModel
         setup()
     }

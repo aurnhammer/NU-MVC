@@ -8,13 +8,18 @@
 
 import UIKit
 
+
 class AlbumsSectionCollectionViewCell: UICollectionViewCell, SectionModelConfigurable, Layoutable, Themeable {
     
     typealias SectionViewModel = AlbumsSectionViewModel
+    
+    static private var transitioningCoordinator: UIViewControllerTransitioningDelegate?
+    private weak var presentationController: Presentable?
     private var sectionViewModel: SectionViewModel?
     private var cellLayout: AlbumCellLayout?
     private var cellTheme: AlbumCellTheme?
     
+
     private lazy var loadingView: UIActivityIndicatorView = {
         let view = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.whiteLarge)
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -44,8 +49,10 @@ class AlbumsSectionCollectionViewCell: UICollectionViewCell, SectionModelConfigu
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configure(withSectionModel model: SectionViewModelProtocol) {
+    
+    func configure(withSectionModel model: SectionViewModelProtocol, presenter: Presentable) {
         self.sectionViewModel = model as? SectionViewModel
+        self.presentationController = presenter
         setup()
     }
     
@@ -87,18 +94,12 @@ class AlbumsSectionCollectionViewCell: UICollectionViewCell, SectionModelConfigu
         
     }
 
-        // Fetching
-    private func fetchItems() {
-        if sectionViewModel == nil {
-        }
-        fetchAlbums { [weak self] in
-        }
-     }
+    // Fetching
 
     /// Spins up an Operation to fetch the Albums
     ///
     /// - Parameter completionHandler: ManagedObjects returned by the request. May be nil.
-    private func fetchAlbums(completionHandler: @escaping () -> Void) {
+    private func fetchItems() {
         guard let url = URL(string: API.topAlbumsURL) else {
             let description = NSLocalizedString("Could not initialize url", comment: "Used when a URL string is malformed and cannot be intialized to a URL.")
             let error = NSError(domain: Errors.top100ErrorDomain, code: Errors.Top100ErrorCode.wrongURLFormat.rawValue,
@@ -110,7 +111,7 @@ class AlbumsSectionCollectionViewCell: UICollectionViewCell, SectionModelConfigu
         let fetchRSSOperation = NetworksOperation<Album>(with: url)
         
         fetchRSSOperation.fetchNetworkOperationCompletionBlock = { [weak self] albums in
-            guard let albums = albums else { completionHandler(); return }
+            guard let albums = albums else { return }
             self?.sectionViewModel = AlbumsSectionViewModel(withAlbums: albums)
             DispatchQueue.main.async {
                 self?.collectionView?.reloadData()
@@ -136,8 +137,8 @@ extension AlbumsSectionCollectionViewCell: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AlbumCollectionViewCell", for: indexPath)
         if let cell = cell as? AlbumCell,
-            let object = sectionViewModel?.viewModel(atIndex:indexPath.row) {
-            cell.configure(withModel: object)
+            let viewModel = sectionViewModel?.viewModel(atIndex:indexPath.row) {
+            cell.configure(withModel: viewModel)
         }
         else {
             fetchItems()
@@ -147,6 +148,20 @@ extension AlbumsSectionCollectionViewCell: UICollectionViewDataSource {
  }
 
 extension AlbumsSectionCollectionViewCell: UICollectionViewDelegate {
+    
+    public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let sectionViewModel = sectionViewModel,
+            let viewModel = sectionViewModel.viewModel(atIndex:indexPath.row) else { return }
+        
+        let detailViewController = AlbumDetailViewController(albumViewModel: viewModel)
+        let destinationViewController = UINavigationController(rootViewController: detailViewController)
+        
+        AlbumsSectionCollectionViewCell.transitioningCoordinator = ViewControllerTransitioningCoordinator(with: collectionView, for: indexPath)
+        destinationViewController.transitioningDelegate = AlbumsSectionCollectionViewCell.transitioningCoordinator
+        
+        destinationViewController.modalPresentationStyle = .custom
+        presentationController?.present(destinationViewController)
+    }
     
 }
 

@@ -162,6 +162,7 @@
 				3DFC757C236CCC1A00E14A1B /* AlbumsSectionCollectionViewCell.swift */,
 				3DFC757E236CCCE300E14A1B /* AlbumsSectionViewModel.swift */,
 				3D84217923707D40000E4023 /* Album Cell */,
+				A9FC473421FB956F004ACDF0 /* AlbumDetailViewController.swift */,
 			);
 			path = "Albums Section";
 			sourceTree = "<group>";
@@ -196,14 +197,6 @@
 			path = "UI Extensions";
 			sourceTree = "<group>";
 		};
-		3DABB2642368E85900071222 /* Managers */ = {
-			isa = PBXGroup;
-			children = (
-				3DABB2652368E85900071222 /* DataManager.swift */,
-			);
-			path = Managers;
-			sourceTree = "<group>";
-		};
 		A952918B22033CCF00EBCA9B /* API */ = {
 			isa = PBXGroup;
 			children = (
@@ -227,9 +220,11 @@
 		A9A53C19221DE0670088420B /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				3DABB2652368E85900071222 /* DataManager.swift */,
 				A9FC471221FB9088004ACDF0 /* Reachability.swift */,
 				A9FC471621FB9093004ACDF0 /* NetworkActivityIndicator.swift */,
 				A9FC472221FB90F8004ACDF0 /* NetworkManager.swift */,
+				A9FC472621FB9109004ACDF0 /* NetworkOperations.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -313,9 +308,6 @@
 				3D84217723707D06000E4023 /* RootView */,
 				3D84217823707D11000E4023 /* Albums Section */,
 				3D84217A23707EB1000E4023 /* Movies Section */,
-				A9FC472621FB9109004ACDF0 /* NetworkOperations.swift */,
-				A9FC473421FB956F004ACDF0 /* AlbumDetailViewController.swift */,
-				3DABB2642368E85900071222 /* Managers */,
 				3DABB2612368E83B00071222 /* UI Extensions */,
 				A952918B22033CCF00EBCA9B /* API */,
 				A9FC46DA21FB8E72004ACDF0 /* Assets.xcassets */,
@@ -695,7 +687,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.disctrictapp.Top-100";
+				PRODUCT_BUNDLE_IDENTIFIER = com.clearchannel.iheartradiotop100;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -714,7 +706,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.disctrictapp.Top-100";
+				PRODUCT_BUNDLE_IDENTIFIER = com.clearchannel.iheartradiotop100;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";

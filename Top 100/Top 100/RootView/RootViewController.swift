@@ -92,7 +92,7 @@ final class RootViewController: UIViewController  {
 }
 
 extension RootViewController: UICollectionViewDataSource {
-    
+        
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return rootViewModel.numberOfSections()
     }
@@ -108,7 +108,7 @@ extension RootViewController: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier ?? "", for: indexPath)
         if let cell = cell as? SectionModelConfigurable,
             let viewModel = rootViewModel.object(atIndex: sectionIndex) as? SectionViewModelProtocol {
-            cell.configure(withSectionModel: viewModel)
+            cell.configure(withSectionModel: viewModel, presenter: self)
         }
         return cell
     }
@@ -116,4 +116,11 @@ extension RootViewController: UICollectionViewDataSource {
 
 extension RootViewController: UICollectionViewDelegate {
     
+}
+
+extension RootViewController: Presentable {
+    func present(_ viewController: UIViewController) {
+        navigationController?.present(viewController, animated: true)
+    }
+
 }

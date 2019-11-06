@@ -21,6 +21,11 @@ extension Reusable {
     }
 }
 
+public protocol Presentable: NSObjectProtocol {
+    
+    func present(_ viewController: UIViewController)
+}
+
 /// Collection view Cell conformance to the reusable protocol
 extension UICollectionViewCell: Reusable {}
 
@@ -31,7 +36,7 @@ public protocol Configurable {
 }
 
 public protocol SectionModelConfigurable {
-    func configure(withSectionModel model: SectionViewModelProtocol)
+    func configure(withSectionModel model: SectionViewModelProtocol, presenter: Presentable)
 }
 
 /// Conformance to Layoutable if required for Cells that wish to handle layout outside their class instance.
