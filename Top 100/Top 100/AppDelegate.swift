@@ -1,9 +1,9 @@
 //
 //  AppDelegate.swift
-//  Aurnhammer
+//  Top 100
 //
 //  Created by William Aurnhammer on 1/25/19.
-//  Copyright © 2019 Aurnhammer. All rights reserved.
+//  Copyright © 2019 iHeart Media Inc. All rights reserved.
 //
 
 import CoreData

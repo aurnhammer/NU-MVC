@@ -1,12 +1,23 @@
 //
 //  NetworksOperation.swift
-//  Aurnhammer
+//  Top 100
 //
 //  Created by William Aurnhammerurnhammer on 1/10/19.
-//  Copyright © 2019 Aurnhammer. All rights reserved.
+//  Copyright © 2019 iHeart Media Inc. All rights reserved.
 //
 
 import UIKit
+
+fileprivate struct FetchImage {
+    /// The local cache
+    static let cache: NSCache<AnyObject, AnyObject> = {
+        let cache = NSCache<AnyObject, AnyObject>()
+        cache.name = "ImageCache"
+        cache.countLimit = 20 // Max 20 images in memory.
+        cache.totalCostLimit = 10*1024*1024 // Max 10MB used.
+        return cache
+    }()
+}
 
 /// An Operation wrapping a URL Request. Used to Fetch Items from Apple's iTunes RSS Feed
 final class NetworksOperation<Item>: AsynchronousOperation where Item: Codable {
@@ -75,7 +86,7 @@ final class FetchImageOperaton: AsynchronousOperation {
     // Public
     var fetchImageOperationCompletionBlock: ((Data?) -> Swift.Void)?
     // Private
-    private let queue = DispatchQueue(label: "com.top_100_image",
+    private let queue = DispatchQueue(label: "com.iheart.image",
                                       qos: .userInteractive,
                                       attributes: .concurrent,
                                       autoreleaseFrequency: .inherit,
@@ -93,17 +104,24 @@ final class FetchImageOperaton: AsynchronousOperation {
     // Operation Start
     override public func main() {
         NetworkActivityIndicator.shared.incrementActivityIndicator()
-        queue.async {
-            self.session.dataTask(with: self.url) { (data, response, error) in
-                guard nil == error,
-                    let data = data else {
-                        self.error = error
-                        self.finish()
-                        return
-                }
-                self.data = data
-                self.finish()
+        if let data = FetchImage.cache.object(forKey: url.absoluteString as NSString) as? Data {
+            self.data = data
+            self.finish()
+        } else {
+            queue.async {
+                self.session.dataTask(with: self.url) { (data, response, error) in
+                    guard nil == error,
+                        let data = data else {
+                            self.error = error
+                            self.finish()
+                            return
+                    }
+                    self.data = data
+                    let nsData: NSData = data as NSData
+                    FetchImage.cache.setObject(nsData, forKey: self.url.absoluteString as NSString)
+                    self.finish()
                 }.resume()
+            }
         }
     }
     // Operation Finish

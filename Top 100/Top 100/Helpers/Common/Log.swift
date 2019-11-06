@@ -1,8 +1,9 @@
 //
 //  Log.swift
+//  Top 100
 //
 //  Created by William Aurnhammerurnhamer on 7/17/16.
-//  Copyright © 2016 Aurnhammer. All rights reserved.
+//  Copyright © 2019 iHeart Media Inc. All rights reserved.
 //
 
 import Foundation

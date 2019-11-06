@@ -3,7 +3,7 @@
 //  Top 100
 //
 //  Created by William Aurnhammer on 11/4/19.
-//  Copyright © 2019 District-1. All rights reserved.
+//  Copyright © 2019 iHeart Media Inc. All rights reserved.
 //
 
 import UIKit

@@ -1,3 +1,11 @@
+//
+//  GridLayout.swift
+//  Top 100
+//
+//  Created by William Aurnhammer on 10/29/19.
+//  Copyright © 2019 iHeart Media Inc. All rights reserved.
+//
+
 import UIKit
 
 //: A subclass of UICollectionView Flow Layout to layout multiple columns In a CollectionView as a grid of square cells.

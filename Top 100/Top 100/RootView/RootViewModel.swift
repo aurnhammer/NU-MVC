@@ -3,7 +3,7 @@
 //  Top 100
 //
 //  Created by William Aurnhammer on 10/30/19.
-//  Copyright © 2019 Aurnhammer. All rights reserved.
+//  Copyright © 2019 iHeart Media Inc. All rights reserved.
 //
 
 import UIKit

@@ -1,9 +1,9 @@
 //
 //  AlbumViewCell.swift
-//  Aurnhammer
+//  Top 100
 //
 //  Created by William Aurnhammerurnhammer on 1/8/19.
-//  Copyright © 2019 Aurnhammer. All rights reserved.
+//  Copyright © 2019 iHeart Media Inc. All rights reserved.
 //
 
 import UIKit

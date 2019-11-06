@@ -2,7 +2,7 @@
 //  ListLayout.swift
 //
 //  Created by William Aurnhammer on 1/5/17.
-//  Copyright © 2017 Aurnhnammer. All rights reserved.
+//  Copyright © 2019 iHeart Media Inc. All rights reserved.
 //
 
 import UIKit
